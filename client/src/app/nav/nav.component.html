@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" [class.hide-nav]="(currentUser$ | async) === null">
+                <li class="nav-item active">
+                    <a class="nav-link">Matches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Lists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Messages</a>
+                </li>
+            </ul>
+
+            <div class="btn-group" dropdown *ngIf="currentUser$ | async; let currUser">
+                <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle">
+                  Welcome {{ currUser.userName }}<span class="caret"></span>
+                </button>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem"><a class="dropdown-item">Edit Profile</a></li>
+                  <li class="divider dropdown-divider"></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                </ul>
+            </div>
+
+            <form *ngIf="(currentUser$ | async) === null" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+                <input class="form-control mr-sm-2" 
+                       type="text" 
+                       placeholder="Username" 
+                       aria-label="username" 
+                       name="username"
+                       [(ngModel)]="model.username"
+                       required>
+                <input class="form-control mr-sm-2" 
+                       type="password" 
+                       placeholder="Password" 
+                       aria-label="password" 
+                       name="password"
+                       [(ngModel)]="model.password"
+                       required>
+                <button class="btn btn-primary my-2 my-sm-0" 
+                        type="submit" 
+                        [disabled]="loginForm.invalid">Login</button>
+            </form>
+        </div>
+    </div>
+    
+  </nav>

@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="text-center heading" *ngIf="!registerMode">
+        <h1>Find your Match!</h1>
+        <h4>Looking for my Netflix and Chill!</h4>
+    </div>
+
+    <div class="text-center" *ngIf="!registerMode">
+        <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
+        <button class="btn btn-outline-primary btn-lg">Learn More</button>
+    </div>
+
+    <div class="container" *ngIf="registerMode">
+        <app-register (cancelRegister)="onCancelRegister($event)"></app-register>
+    </div>
+</div>

@@ -1,27 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <div class="container">
-        <a class="navbar-brand" href="#">{{ title }}</a>
+        <a class="navbar-brand" href="#" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ title }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" [class.hide-nav]="(currentUser$ | async) === null">
-                <li class="nav-item active">
-                    <a class="nav-link">Matches</a>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Lists</a>
+                    <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Messages</a>
+                    <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
                 </li>
             </ul>
 
             <div class="btn-group" dropdown *ngIf="currentUser$ | async; let currUser">
                 <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-primary dropdown-toggle">
-                  Welcome {{ currUser.userName }}<span class="caret"></span>
+                  Welcome {{ currUser.userName | titlecase }}<span class="caret"></span>
                 </button>
                 <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu">
                   <li role="menuitem"><a class="dropdown-item">Edit Profile</a></li>

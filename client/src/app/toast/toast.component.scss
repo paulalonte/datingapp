@@ -1,0 +1,26 @@
+:host {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+div {
+    display: inline-block;
+    padding: 10px 24px;
+    margin: 0;
+    background: green;
+    color: white;
+    border-radius: 4px;
+
+    h5 {
+        margin: 0;
+    }
+}
+
+.success {
+    background: green;
+}
+
+.error {
+    background: red;
+}

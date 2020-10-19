@@ -1,0 +1,8 @@
+<ng-container *ngIf="msg | async; let toast">
+    <div [ngClass]="toast.class">
+        <h5>{{ toast.message }}</h5>
+    </div>
+</ng-container>
+
+
+
